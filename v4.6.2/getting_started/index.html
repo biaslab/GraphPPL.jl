@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Getting Started · GraphPPL.jl</title><meta name="title" content="Getting Started · GraphPPL.jl"/><meta property="og:title" content="Getting Started · GraphPPL.jl"/><meta property="twitter:title" content="Getting Started · GraphPPL.jl"/><meta name="description" content="Documentation for GraphPPL.jl."/><meta property="og:description" content="Documentation for GraphPPL.jl."/><meta property="twitter:description" content="Documentation for GraphPPL.jl."/><script data-outdated-warner src="../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../assets/documenter.js"></script><script src="../search_index.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../">GraphPPL.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../">Home</a></li><li class="is-active"><a class="tocitem" href>Getting Started</a><ul class="internal"><li><a class="tocitem" href="#Installation"><span>Installation</span></a></li><li><a class="tocitem" href="#Creating-a-model"><span>Creating a model</span></a></li><li><a class="tocitem" href="#Syntax"><span>Syntax</span></a></li><li><a class="tocitem" href="#Inputs-and-interfaces"><span>Inputs and interfaces</span></a></li><li><a class="tocitem" href="#Bayesian-Coin-Toss-(Beta-Bernoulli-model)"><span>Bayesian Coin-Toss (Beta-Bernoulli model)</span></a></li><li><a class="tocitem" href="#Instantiating-the-model"><span>Instantiating the model</span></a></li><li><a class="tocitem" href="#Visualizing-the-model"><span>Visualizing the model</span></a></li><li><a class="tocitem" href="#Syntax-Guide"><span>Syntax Guide</span></a></li></ul></li><li><a class="tocitem" href="../syntax_guide/">Syntax Guide</a></li><li><a class="tocitem" href="../nested_models/">Nested Models</a></li><li><span class="tocitem">Plugins</span><ul><li><a class="tocitem" href="../plugins/overview/">Overview</a></li><li><a class="tocitem" href="../plugins/constraint_specification/">Variational Inference &amp; Constraints</a></li><li><a class="tocitem" href="../plugins/meta_specification/">Attaching metadata to nodes</a></li><li><a class="tocitem" href="../plugins/created_by/">Tracking creation of nodes</a></li><li><a class="tocitem" href="../plugins/node_tag/">Setting tag of nodes</a></li><li><a class="tocitem" href="../plugins/node_id/">Setting ID of nodes</a></li></ul></li><li><a class="tocitem" href="../migration_3_to_4/">Migration Guide (from v3 to v4)</a></li><li><a class="tocitem" href="../developers_guide/">Developers Guide</a></li><li><a class="tocitem" href="../custom_backend/">Custom backend</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Getting Started</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Getting Started</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/ReactiveBayes/GraphPPL.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/ReactiveBayes/GraphPPL.jl/blob/main/docs/src/getting_started.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Getting-Started"><a class="docs-heading-anchor" href="#Getting-Started">Getting Started</a><a id="Getting-Started-1"></a><a class="docs-heading-anchor-permalink" href="#Getting-Started" title="Permalink"></a></h1><p>On this page we will cover the basic syntax of <code>GraphPPL</code> and will work towards a basic coin-toss example. </p><h2 id="Installation"><a class="docs-heading-anchor" href="#Installation">Installation</a><a id="Installation-1"></a><a class="docs-heading-anchor-permalink" href="#Installation" title="Permalink"></a></h2><p><code>GraphPPL.jl</code> is a registered Julia package. To install it, run the following command in the Julia REPL:</p><pre><code class="language-julia hljs">julia&gt; using Pkg
+julia&gt; Pkg.add(&quot;GraphPPL&quot;)</code></pre><p>This guide assumes you have <code>GraphPPL.jl</code> installed, as well as <code>Distributions.jl</code> to work with standard probability distributions as building blocks in our probabilistic programs.</p><pre><code class="language-julia hljs">using GraphPPL
+using Distributions</code></pre><h2 id="Creating-a-model"><a class="docs-heading-anchor" href="#Creating-a-model">Creating a model</a><a id="Creating-a-model-1"></a><a class="docs-heading-anchor-permalink" href="#Creating-a-model" title="Permalink"></a></h2><p>In <code>GraphPPL</code>, we can specify a model with the <code>@model</code> macro. The <code>@model</code> macro takes a function as an argument, and registers the blueprint of creating this model. The model macro is not exported by default by <code>GraphPPL</code> to allow inference packages to define their own <code>@model</code> macro on top of the <code>GraphPPL.jl</code>. For demonstration purposes we will import <code>GraphPPL.@model</code> explicitly:</p><pre><code class="language-julia hljs">import GraphPPL: @model</code></pre><h2 id="Syntax"><a class="docs-heading-anchor" href="#Syntax">Syntax</a><a id="Syntax-1"></a><a class="docs-heading-anchor-permalink" href="#Syntax" title="Permalink"></a></h2><p>In general, we can write probabilistic programs in <code>GraphPPL</code> using the <code>~</code> operator.  The <code>x ~ X</code> expression can be read as <span>$x$</span> <em>sampled from</em> <span>$X$</span>. For example, if we want to define a random variable <code>x</code> that is distributed according to a normal distribution with mean 0 and variance 1, we can write:</p><pre><code class="language-julia hljs">@model function example()
+    x ~ Normal(0, 1)
+end</code></pre><p>We can also define multiple random variables in the same model:</p><pre><code class="language-julia hljs">@model function example()
+    x ~ Normal(0, 1)
+    y ~ Normal(0, 1)
+end</code></pre><p>or use our newly defined random variables as parameters for other distributions:</p><pre><code class="language-julia hljs">@model function example()
+    x ~ Normal(0, 1)
+    y ~ Normal(x, 1)
+end</code></pre><p>We can also use the <code>:=</code> operator to define deterministic relations:</p><pre><code class="language-julia hljs">@model function example()
+    x ~ Normal(0, 1)
+    y ~ Normal(x, 1)
+    z := x + y
+end</code></pre><p>Note that a deterministic function, when called with known parameters, will not materialize in the factor graph, but will instead compile out and return the result. To illustrate this: </p><pre><code class="language-julia hljs">@model function example()
+    μ := 1 + 2
+    x ~ Normal(μ, 1)
+    y ~ Normal(x, 1)
+    z := x + y
+end</code></pre><p>In the above example, the <code>μ := 1 + 2</code> line will not materialize in the factor graph, and instead will instantiate the variable <code>μ</code> with the value <code>3</code>. However, since <code>x</code> and <code>y</code> are random variables, the <code>+</code> operator will materialize in the factor graph.</p><h2 id="Inputs-and-interfaces"><a class="docs-heading-anchor" href="#Inputs-and-interfaces">Inputs and interfaces</a><a id="Inputs-and-interfaces-1"></a><a class="docs-heading-anchor-permalink" href="#Inputs-and-interfaces" title="Permalink"></a></h2><p>In <code>GraphPPL</code>, we can feed data and interfaces into the model through the function arguments. For example, if we want to define a model that takes in a vector of observations <code>x</code> that are all distributed according to a normal distribution with mean 0 and variance 1, we can write:</p><pre><code class="language-julia hljs">@model function example(x)
+    for i in eachindex(x)
+        x[i] ~ Normal(0, 1)
+    end
+end</code></pre><p>Alternatively, we can use the broadcasting syntax from Julia, extended to work with the <code>~</code> operator:</p><pre><code class="language-julia hljs">@model function example(x)
+    x .~ Normal(0, 1)
+end</code></pre><p>Note that interfaces do not need to be random variables; this distinction will be made during model construction. Until a variable is used as an input to a stochastic node, it will be treated as a regular variable. This allows us to write models that take in both data and parameters:</p><pre><code class="language-julia hljs">@model function recursive_model(x, depth)
+    if depth == 0
+        x ~ Normal(0, 1)
+    else
+        x ~ recursive_model(depth = depth - 1)
+    end
+end</code></pre><p>Here, <code>x</code> is treated as a random variable since it is connected to a <code>Normal</code> node. However, <code>depth</code> is only used as a hyperparameter to define model structure and is not connected to any stochastic nodes, so it is treated as a regular variable. In this recursive model we also get to see nested models in action: the <code>recursive_model</code> is used as a submodel of itself. More on this in the <a href="#nested-models">Nested Models</a> section.</p><div class="admonition is-info"><header class="admonition-header">Note</header><div class="admonition-body"><p>Models defined with the <code>@model</code> macro have no positional arguments. All the arguments are converted to the keyword arguments. This also means that the models cannot use multiple dispatch, since multiple dispatch on keyword arguments is not supported in Julia.</p></div></div><h2 id="Bayesian-Coin-Toss-(Beta-Bernoulli-model)"><a class="docs-heading-anchor" href="#Bayesian-Coin-Toss-(Beta-Bernoulli-model)">Bayesian Coin-Toss (Beta-Bernoulli model)</a><a id="Bayesian-Coin-Toss-(Beta-Bernoulli-model)-1"></a><a class="docs-heading-anchor-permalink" href="#Bayesian-Coin-Toss-(Beta-Bernoulli-model)" title="Permalink"></a></h2><p>Now that we have a grasp on the basic syntax and semantics of <code>GraphPPL</code>, let&#39;s try to write a simple coin-toss model a.k.a Beta-Bernoulli model. We will start with a model that takes in a series of observations <code>x</code> that are i.i.d. distributed according to a Bernoulli distribution with parameter <code>θ</code>, where we put a Beta prior on <code>θ</code>:</p><pre><code class="language-julia hljs">@model function coin_toss(x)
+    θ ~ Beta(1, 1)
+    x .~ Bernoulli(θ)
+end</code></pre><h2 id="Instantiating-the-model"><a class="docs-heading-anchor" href="#Instantiating-the-model">Instantiating the model</a><a id="Instantiating-the-model-1"></a><a class="docs-heading-anchor-permalink" href="#Instantiating-the-model" title="Permalink"></a></h2><p>To instantiate the model we need to pass the data <code>x</code>. We can do that with the <a href="../developers_guide/#GraphPPL.create_model"><code>GraphPPL.create_model</code></a> function in combination with <a href="../developers_guide/#GraphPPL.datalabel"><code>GraphPPL.datalabel</code></a>.</p><pre><code class="language-julia hljs">data_for_x = [ 1.0, 0.0, 0.0, 1.0 ]
+
+model = GraphPPL.create_model(coin_toss()) do model, context
+    return (;
+        # This expression creates data handle for `x` in the model using the `xdata` as the underlying collection
+        x = GraphPPL.datalabel(model, context, GraphPPL.NodeCreationOptions(kind = GraphPPL.VariableKindData), :x, data_for_x)
+    )
+end</code></pre><h2 id="Visualizing-the-model"><a class="docs-heading-anchor" href="#Visualizing-the-model">Visualizing the model</a><a id="Visualizing-the-model-1"></a><a class="docs-heading-anchor-permalink" href="#Visualizing-the-model" title="Permalink"></a></h2><p><code>GraphPPL</code> exports a simple visualization function that can be used to visualize the factor graph of a model. This requires the <code>GraphPlot</code> and <code>Cairo</code> packages to be installed. To visualize the <code>coin_toss</code> model, we can run:</p><pre><code class="language-julia hljs">using GraphPlot, Cairo
+GraphPlot.gplot(model)</code></pre><img src='data:image/svg+xml;utf-8,<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     version="1.2"
+     width="100mm" height="100mm" viewBox="0 0 100 100"
+     stroke="none"
+     fill="%23000000"
+     stroke-width="0.3"
+     font-size="3.88"
+>
+<defs>
+  <marker id="arrow" markerWidth="15" markerHeight="7" refX="5" refY="3.5" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L15,3.5 L0,7 z" stroke="context-stroke" fill="context-stroke"/>
+  </marker>
+</defs>
+<g fill="%23000000" fill-opacity="0.000" id="img-ab2e6283-1">
+  <g transform="translate(50,50)">
+    <path d="M-50,-50 L50,-50 50,50 -50,50  z" class="primitive"/>
+  </g>
+</g>
+<g stroke-width="0.87" stroke="%23D3D3D3" id="img-ab2e6283-2">
+</g>
+<g stroke-width="0.87" stroke="%23D3D3D3" id="img-ab2e6283-3">
+  <g transform="translate(60.54,51.44)">
+    <path fill="none" d="M-10.14,-2.19 L10.14,2.19 " class="primitive"/>
+  </g>
+  <g transform="translate(46.96,60.59)">
+    <path fill="none" d="M0.37,-8.98 L-0.37,8.98 " class="primitive"/>
+  </g>
+  <g transform="translate(39.33,39.99)">
+    <path fill="none" d="M6.07,6.43 L-6.07,-6.43 " class="primitive"/>
+  </g>
+  <g transform="translate(36.43,53.02)">
+    <path fill="none" d="M8.24,-3.29 L-8.24,3.29 " class="primitive"/>
+  </g>
+  <g transform="translate(51.59,37.53)">
+    <path fill="none" d="M-3.08,8.27 L3.08,-8.27 " class="primitive"/>
+  </g>
+  <g transform="translate(80.7,60.44)">
+    <path fill="none" d="M4.82,4.2 L-4.82,-4.2 " class="primitive"/>
+  </g>
+  <g transform="translate(82.64,51.66)">
+    <path fill="none" d="M6.14,-1.77 L-6.14,1.77 " class="primitive"/>
+  </g>
+  <g transform="translate(45.92,82.12)">
+    <path fill="none" d="M-0.37,6.55 L0.37,-6.55 " class="primitive"/>
+  </g>
+  <g transform="translate(24.81,24.57)">
+    <path fill="none" d="M-4.33,-4.61 L4.33,4.61 " class="primitive"/>
+  </g>
+  <g transform="translate(16.86,60.82)">
+    <path fill="none" d="M-5.74,2.28 L5.74,-2.28 " class="primitive"/>
+  </g>
+  <g transform="translate(58.91,17.39)">
+    <path fill="none" d="M2.19,-6.22 L-2.19,6.22 " class="primitive"/>
+  </g>
+</g>
+<g fill="%23D3D3D3" id="img-ab2e6283-4">
+</g>
+<g fill="%23D3D3D3" id="img-ab2e6283-5">
+</g>
+<g font-size="4" fill="%23000000" id="img-ab2e6283-6">
+</g>
+<g stroke-width="0" stroke="%23000000" stroke-opacity="0.000" fill="%2340E0D0" id="img-ab2e6283-7">
+  <g transform="translate(47.46,48.61)">
+    <circle cx="0" cy="0" r="2.89" class="primitive"/>
+  </g>
+  <g transform="translate(87.79,66.61)">
+    <circle cx="0" cy="0" r="2.89" class="primitive"/>
+  </g>
+  <g transform="translate(91.67,49.06)">
+    <circle cx="0" cy="0" r="2.89" class="primitive"/>
+  </g>
+  <g transform="translate(73.62,54.27)">
+    <circle cx="0" cy="0" r="2.89" class="primitive"/>
+  </g>
+  <g transform="translate(45.39,91.67)">
+    <circle cx="0" cy="0" r="2.89" class="primitive"/>
+  </g>
+  <g transform="translate(18.42,17.77)">
+    <circle cx="0" cy="0" r="2.89" class="primitive"/>
+  </g>
+  <g transform="translate(8.33,64.21)">
+    <circle cx="0" cy="0" r="2.89" class="primitive"/>
+  </g>
+  <g transform="translate(62.11,8.33)">
+    <circle cx="0" cy="0" r="2.89" class="primitive"/>
+  </g>
+  <g transform="translate(46.46,72.57)">
+    <circle cx="0" cy="0" r="2.89" class="primitive"/>
+  </g>
+  <g transform="translate(31.2,31.37)">
+    <circle cx="0" cy="0" r="2.89" class="primitive"/>
+  </g>
+  <g transform="translate(25.39,57.42)">
+    <circle cx="0" cy="0" r="2.89" class="primitive"/>
+  </g>
+  <g transform="translate(55.72,26.44)">
+    <circle cx="0" cy="0" r="2.89" class="primitive"/>
+  </g>
+</g>
+<g font-family="Helvetica" font-size="4" fill="%23000000" id="img-ab2e6283-8">
+  <g transform="translate(47.46,48.61)">
+    <g class="primitive">
+      <text text-anchor="middle" dy="0.35em">θ</text>
+    </g>
+  </g>
+  <g transform="translate(87.79,66.61)">
+    <g class="primitive">
+      <text text-anchor="middle" dy="0.35em">constvar</text>
+    </g>
+  </g>
+  <g transform="translate(91.67,49.06)">
+    <g class="primitive">
+      <text text-anchor="middle" dy="0.35em">constvar</text>
+    </g>
+  </g>
+  <g transform="translate(73.62,54.27)">
+    <g class="primitive">
+      <text text-anchor="middle" dy="0.35em">Distributions.Beta</text>
+    </g>
+  </g>
+  <g transform="translate(45.39,91.67)">
+    <g class="primitive">
+      <text text-anchor="middle" dy="0.35em">x</text>
+    </g>
+  </g>
+  <g transform="translate(18.42,17.77)">
+    <g class="primitive">
+      <text text-anchor="middle" dy="0.35em">x</text>
+    </g>
+  </g>
+  <g transform="translate(8.33,64.21)">
+    <g class="primitive">
+      <text text-anchor="middle" dy="0.35em">x</text>
+    </g>
+  </g>
+  <g transform="translate(62.11,8.33)">
+    <g class="primitive">
+      <text text-anchor="middle" dy="0.35em">x</text>
+    </g>
+  </g>
+  <g transform="translate(46.46,72.57)">
+    <g class="primitive">
+      <text text-anchor="middle" dy="0.35em">Distributions.Bernoulli</text>
+    </g>
+  </g>
+  <g transform="translate(31.2,31.37)">
+    <g class="primitive">
+      <text text-anchor="middle" dy="0.35em">Distributions.Bernoulli</text>
+    </g>
+  </g>
+  <g transform="translate(25.39,57.42)">
+    <g class="primitive">
+      <text text-anchor="middle" dy="0.35em">Distributions.Bernoulli</text>
+    </g>
+  </g>
+  <g transform="translate(55.72,26.44)">
+    <g class="primitive">
+      <text text-anchor="middle" dy="0.35em">Distributions.Bernoulli</text>
+    </g>
+  </g>
+</g>
+<g font-family="Helvetica" font-size="4" fill="%23000000" id="img-ab2e6283-9">
+  <g transform="translate(50,0)">
+    <g class="primitive">
+      <text text-anchor="middle" dy="0.35em"></text>
+    </g>
+  </g>
+</g>
+</svg>
+'/><h2 id="Syntax-Guide"><a class="docs-heading-anchor" href="#Syntax-Guide">Syntax Guide</a><a id="Syntax-Guide-1"></a><a class="docs-heading-anchor-permalink" href="#Syntax-Guide" title="Permalink"></a></h2><p>To dive into the specifics of the syntax of the model specification within <code>GraphPPL.jl</code> read the <a href="../syntax_guide/#syntax-guide">Syntax Guide</a>.</p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../">« Home</a><a class="docs-footer-nextpage" href="../syntax_guide/">Syntax Guide »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.8.0 on <span class="colophon-date" title="Tuesday 4 February 2025 15:40">Tuesday 4 February 2025</span>. Using Julia version 1.11.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
